@@ -9,11 +9,11 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {   
 
-  private bool object_dısappear=true;
-    public ParticleSystem particle;
+ 
      public SpriteRenderer spriteRenderer{get; private set;}
     public int health{get;private set;}
      public Sprite[] color;
+     public ParticleSystem[] particle;
     private void Awake(){
         this.spriteRenderer=GetComponent<SpriteRenderer>();
         
@@ -27,21 +27,16 @@ public class Brick : MonoBehaviour
    
 
   }
-   public void blockcrasher(){
-    if(object_dısappear==false){
-      particle.Play();
-    }
-   
-        
-  }
+ 
   private void Hit(){
    
     this.health--;
   if(this.health<=0){
      
     Destroy(gameObject);
-      object_dısappear=false;
+    
   }else{
+    
     this.spriteRenderer.sprite=this.color[this.health-1];
 
   }
@@ -52,7 +47,11 @@ private void OnCollisionEnter2D(Collision2D collision) {
   
         
     if(collision.gameObject.name=="Ball"){
-      particle.Play();
+      
+     
+      particle[health-1].Play();
+   
+  
       Hit();
       
 

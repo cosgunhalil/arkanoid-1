@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-public float speed=70f;
+  
 
+public float speed=70f;
 public new Rigidbody2D rigidbody{
     get; private set;
 }
@@ -23,6 +24,7 @@ this.rigidbody=GetComponent<Rigidbody2D>();
     }
     else if(Input.GetKey(KeyCode.D)){
         this.direction=Vector2.right;
+        
     }
     else{
         this.direction=Vector2.zero;
@@ -36,7 +38,9 @@ this.rigidbody=GetComponent<Rigidbody2D>();
     
 }
 
+
 }
+
 
 
 

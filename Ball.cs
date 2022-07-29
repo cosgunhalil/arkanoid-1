@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+   private GameObject currentTeleporter;
    public float speed=750f;
    public new Rigidbody2D rigidbody{
     get; private set;
@@ -12,7 +13,6 @@ public class Ball : MonoBehaviour
     
     this.rigidbody=GetComponent<Rigidbody2D>();
     }
-      
     private void Start() 
     {
        Vector2 force=Vector2.zero;
@@ -20,9 +20,10 @@ public class Ball : MonoBehaviour
        force.y=-1f;
   
        this.rigidbody.AddForce(force*this.speed);
-        
+      
         
     }
+    
     private void gamestart(){
 
     }   
