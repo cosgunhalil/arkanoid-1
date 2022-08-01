@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-   private GameObject currentTeleporter;
+
    public float speed=750f;
    public new Rigidbody2D rigidbody{
     get; private set;
@@ -24,9 +24,8 @@ public class Ball : MonoBehaviour
         
     }
     
-    private void gamestart(){
-
-    }   
+    
+      
 
 
 

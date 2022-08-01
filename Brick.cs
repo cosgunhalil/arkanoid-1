@@ -9,10 +9,15 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {   
 
- 
+      /// brickin cinsi
      public SpriteRenderer spriteRenderer{get; private set;}
+
+     //// tuğla kaç vuruşta gidecek
     public int health{get;private set;}
+    ///tuğla her vuruşta renk değiştirecek
      public Sprite[] color;
+
+     /// her vuruşta partikül sistemi colora uygun şekilde çalıştırılacak
      public ParticleSystem[] particle;
     private void Awake(){
         this.spriteRenderer=GetComponent<SpriteRenderer>();
@@ -29,7 +34,7 @@ public class Brick : MonoBehaviour
   }
  
   private void Hit(){
-   
+   ///çarptıysa top sağlığı 1 azalt rengi değiştir
     this.health--;
   if(this.health<=0){
      
@@ -43,11 +48,13 @@ public class Brick : MonoBehaviour
     
 
   }
+
+  //çarpışma olduğu anda
 private void OnCollisionEnter2D(Collision2D collision) {
-  
+  ///çarpan şeyin adı Ball mu?
         
     if(collision.gameObject.name=="Ball"){
-      
+      /// eğer ballsa partikülleri ve Hit() fonksiyonunu çalıştır
      
       particle[health-1].Play();
    
