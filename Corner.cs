@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Corner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Top bazen iki köşe arasında gidiyordu o yüzden eklendi wall classının aynısı
    Animator anim;
     //triggerın adı
     const string bounce_anim="iscorner";
@@ -15,7 +15,7 @@ public class Corner : MonoBehaviour
         anim.SetTrigger(bounce_anim);
     }
    private void OnCollisionEnter2D(Collision2D collision) {
-        //duvara çarpan şeyin adı Ball mu Paddle da olabilirdi eğer ballsa animasyon başlasın
+        //Cornera çarpan şeyin adı Ball mu Paddle da olabilirdi eğer ballsa animasyon başlasın
     if(collision.gameObject.name=="Ball"||collision.gameObject.name=="Ball(Clone)"){
         animationTrigger();
     }

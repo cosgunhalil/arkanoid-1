@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Scene_Manager : MonoBehaviour
 {
-    // Start is called before the first frame update
+   //sceneler arası geçiş
    public void level(){
     SceneManager.LoadScene("Normal_Level");
    }

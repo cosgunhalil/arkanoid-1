@@ -7,6 +7,8 @@ public class Power : MonoBehaviour
         [SerializeField] GameObject Powerr;
          [SerializeField] GameObject Powerr2;
           [SerializeField] GameObject Powerr3;
+
+          ///temas ederse Spawnball classını çağır
      void OnTriggerEnter2D(Collider2D other) {
        if(other.gameObject.name=="Ball"||other.gameObject.name=="Ball(Clone)"){
        Spawnball();
@@ -14,6 +16,7 @@ public class Power : MonoBehaviour
        }
         
     }
+    //3 tane ball objesini topun çarptığı objenin konumunda üret ve topun çarptığı objeyi yok et.
     void Spawnball(){
         GameObject a= Object.Instantiate(Powerr) as GameObject;
         GameObject a1= Object.Instantiate(Powerr2) as GameObject;
