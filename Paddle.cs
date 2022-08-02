@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Paddle : MonoBehaviour
 {
 Animator anim;
-public GameObject power;
 //trigger variable
 const string bounce_anim="isbounced";
 //top hızı
@@ -33,8 +33,11 @@ this.rigidbody=GetComponent<Rigidbody2D>();
     }
     else if(Input.GetKey(KeyCode.D)){
         this.direction=Vector2.right;
-        Vector3 randomPosition= new Vector3(10,10,0);
-Instantiate(power,randomPosition,Quaternion.identity);
+        
+        
+    }
+    else if(Input.GetKey(KeyCode.Escape)){
+        SceneManager.LoadScene("gameover");
     }
     else{
         this.direction=Vector2.zero;
@@ -54,7 +57,7 @@ Instantiate(power,randomPosition,Quaternion.identity);
 //top paddle a çarparsa    
 private void OnCollisionEnter2D(Collision2D collision) {
         //çarpan objenin adı Ball ise
-    if(collision.gameObject.name=="Ball"){
+    if(collision.gameObject.name=="Ball"||collision.gameObject.name=="Ball(Clone)"){
         ////matematiksel şeyler
             Vector2 paddlePosition = transform.position;
             Vector2 contactPoint = collision.GetContact(0).point;

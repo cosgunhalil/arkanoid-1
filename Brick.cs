@@ -1,16 +1,14 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Numerics;
-using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class Brick : MonoBehaviour
 {   
-       Ball  ball;
+       GameObject  Ball;
+       public Ball ball;
    public  Power power;
       /// brickin cinsi
      public SpriteRenderer spriteRenderer{get; private set;}
@@ -42,10 +40,11 @@ public class Brick : MonoBehaviour
 private void OnCollisionEnter2D(Collision2D collision) {
    
   ///çarpan şeyin adı Ball mu?
-    if(collision.gameObject.name=="Ball"){
+    if(collision.gameObject.name=="Ball"||collision.gameObject.name=="Ball(Clone)"){
       /// eğer ballsa partikülleri ve Hit() fonksiyonunu çalıştır
       particle[health-1].Play();
-
+      
+      
     
    
       Hit();

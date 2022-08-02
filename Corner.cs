@@ -1,15 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Wall : MonoBehaviour
-{///*********************************** yine aynı şeyden iki tane optmize et ***************************
-    ///Wall animasyonu için
-    Animator anim;
+public class Corner : MonoBehaviour
+{
+    // Start is called before the first frame update
+   Animator anim;
     //triggerın adı
-    const string bounce_anim="iscollide";
+    const string bounce_anim="iscorner";
     void Start(){
         anim=GetComponent<Animator>();
     }
