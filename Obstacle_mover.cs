@@ -20,10 +20,9 @@ public class Obstacle_mover : MonoBehaviour
     void Start()
     {
         startPosition=transform.position;
-
+        
 
     }
-
     // position her framede sağa doğru değişiyor
     void Update()
     {
