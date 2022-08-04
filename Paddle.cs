@@ -20,6 +20,7 @@ void Start()
 {
     anim=this.GetComponent<Animator>();
     audioo=this.GetComponent<AudioSource>();
+    this.audioo.playOnAwake = false;
 }
     public new Rigidbody2D rigidbody{
     get; private set;

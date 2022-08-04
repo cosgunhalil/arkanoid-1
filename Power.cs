@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Power : MonoBehaviour
-{
+{         
+          AudioSource audioo;
         [SerializeField] GameObject Ball1;
         [SerializeField] GameObject Ball2;
         [SerializeField] GameObject Ball3;
-         
+
+
+           private void Start() {
+            audioo=this.GetComponent<AudioSource>();
+            
+          }
+        
 
           ///temas ederse Spawnball classını çağır
      void OnTriggerEnter2D(Collider2D other) {
        if(other.gameObject.name=="Ball"||other.gameObject.name=="Ball(Clone)"){
-       Spawnball();
+         audioo.Play();
+        
+        Spawnball();
 
        }
         

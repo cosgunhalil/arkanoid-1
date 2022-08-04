@@ -19,6 +19,7 @@ public class Brick : MonoBehaviour
     private void Awake(){
         this.spriteRenderer=GetComponent<SpriteRenderer>();    
           audioo=this.GetComponent<AudioSource>();
+          this.audioo.playOnAwake = false;
        
     }
   private void Start(){
@@ -44,7 +45,7 @@ private void OnCollisionEnter2D(Collision2D collision) {
     if(collision.gameObject.name=="Ball"||collision.gameObject.name=="Ball(Clone)"){
       /// eğer ballsa partikülleri ve Hit() fonksiyonunu çalıştır
       particle[health-1].Play();
-      
+
       audioo.Play();
       
     

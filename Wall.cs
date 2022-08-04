@@ -7,6 +7,8 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {///*********************************** yine aynı şeyden iki tane optmize et ***************************
 
+
+        public bool bounce=true;
     AudioSource auidoo;
     ///Wall animasyonu için
     Animator anim;
@@ -17,7 +19,10 @@ public class Wall : MonoBehaviour
         auidoo=GetComponent<AudioSource>();
     }
     private void animationTrigger(){
+        if(bounce){
+
         anim.SetTrigger(bounce_anim);
+        }
     }
    private void OnCollisionEnter2D(Collision2D collision) {
         //duvara çarpan şeyin adı Ball mu Paddle da olabilirdi eğer ballsa animasyon başlasın
