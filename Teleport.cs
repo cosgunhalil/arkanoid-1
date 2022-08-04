@@ -12,6 +12,7 @@ public class Teleport : MonoBehaviour
     [SerializeField] bool isTeleporter_A;
     //Teleportun gerçekleşmesi için gerekli olan uzaklık
     public float distance=1f;
+    //Teleporter ve Teleporter2 taglerine sahip objeleri bulup onların transform componentlerini alıyor
         void Start(){
             destination=GameObject.FindGameObjectWithTag("Teleporter").GetComponent<Transform>();
             destination2=GameObject.FindGameObjectWithTag("Teleporter2").GetComponent<Transform>();

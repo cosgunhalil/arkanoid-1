@@ -7,9 +7,7 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {   
-       GameObject  Ball;
-       public Ball ball;
-   public  Power power;
+    AudioSource audioo;
       /// brickin cinsi
      public SpriteRenderer spriteRenderer{get; private set;}
      //// tuğla kaç vuruşta gidecek
@@ -19,12 +17,14 @@ public class Brick : MonoBehaviour
      /// her vuruşta partikül sistemi colora uygun şekilde çalıştırılacak
      public ParticleSystem[] particle;
     private void Awake(){
-        this.spriteRenderer=GetComponent<SpriteRenderer>();     
+        this.spriteRenderer=GetComponent<SpriteRenderer>();    
+          audioo=this.GetComponent<AudioSource>();
        
     }
   private void Start(){
     this.health=this.color.Length;
     this.spriteRenderer.sprite=this.color[this.health-1];
+  
   }
   private void Hit(){
    ///çarptıysa brick sağlığını 1 azalt rengini değiştir
@@ -35,6 +35,7 @@ public class Brick : MonoBehaviour
   }else{
     this.spriteRenderer.sprite=this.color[this.health-1];
   }
+
   }
   //çarpışma olduğu anda
 private void OnCollisionEnter2D(Collision2D collision) {
@@ -44,6 +45,7 @@ private void OnCollisionEnter2D(Collision2D collision) {
       /// eğer ballsa partikülleri ve Hit() fonksiyonunu çalıştır
       particle[health-1].Play();
       
+      audioo.Play();
       
     
    

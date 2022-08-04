@@ -7,8 +7,11 @@ using UnityEngine.SceneManagement;
 public class Paddle : MonoBehaviour
 {
 Animator anim;
+AudioSource audioo;
+Shake saker;
 //trigger variable
 const string bounce_anim="isbounced";
+ 
 //top hızı
 [SerializeField] float speed=70f;
 //matematiksel şeylerde kullanılacak sekme açısı
@@ -16,6 +19,7 @@ public float maxBounceAngle = 75f;
 void Start()
 {
     anim=this.GetComponent<Animator>();
+    audioo=this.GetComponent<AudioSource>();
 }
     public new Rigidbody2D rigidbody{
     get; private set;
@@ -53,6 +57,12 @@ this.rigidbody=GetComponent<Rigidbody2D>();
   private void animationTrigger(){
     ///eğer fonksiyon çağrılmışsa bounce_anim adındaki triggerla animasyonu çağır
         anim.SetTrigger(bounce_anim);
+        
+    }
+      private void soundtrigger(){
+    ///eğer fonksiyon çağrılmışsa bounce_anim adındaki triggerla animasyonu çağır
+        audioo.Play();
+        
     }
 //top paddle a çarparsa    
 private void OnCollisionEnter2D(Collision2D collision) {
@@ -68,9 +78,11 @@ private void OnCollisionEnter2D(Collision2D collision) {
             float newAngle = Mathf.Clamp(currentAngle + bounceAngle, -maxBounceAngle, maxBounceAngle);
             Quaternion rotation = Quaternion.AngleAxis(newAngle, Vector3.forward);
             collision.rigidbody.velocity = rotation * Vector2.up * collision.rigidbody.velocity.magnitude;
+            
             ////
             ///animasyonu tetikleyecek fonksiyon
-        animationTrigger();
+                audioo.Play();
+            animationTrigger();
     }
       
     
