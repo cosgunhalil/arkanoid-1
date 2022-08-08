@@ -12,15 +12,11 @@ public class Power : MonoBehaviour
             
           }
           ///temas ederse Spawnball classını çağır
-          //effecti çal
      void OnTriggerEnter2D(Collider2D other) {
        if(other.gameObject.name=="Ball"||other.gameObject.name=="Ball(Clone)"){
          audioo.Play();
-        
         Spawnball();
-
-       }
-        
+       } 
     }
     //3 tane ball objesini topun çarptığı objenin konumunda üret ve topun çarptığı objeyi yok et.
     void Spawnball(){

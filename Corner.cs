@@ -15,7 +15,7 @@ public class Corner : MonoBehaviour
         corner_bounce.SetTrigger(trigger_name);
     }
    private void OnCollisionEnter2D(Collision2D collision) {
-        //Cornera çarpan şeyin adı Ball mu Paddle da olabilirdi eğer ballsa animasyon başlasın
+        //Cornera çarpan şeyin adı Ball mu eğer ballsa animasyon başlasın
     if(collision.gameObject.name=="Ball"||collision.gameObject.name=="Ball(Clone)"){
         animationTrigger();
     }

@@ -42,12 +42,12 @@ this.rigidbody=GetComponent<Rigidbody2D>();
         this.direction=Vector2.left;
     }
     else if(Input.GetKey(KeyCode.D)){
-        this.direction=Vector2.right;
-        
-        
+        this.direction=Vector2.right; 
     }
     else if(Input.GetKey(KeyCode.Escape)){
-        SceneManager.LoadScene("gameover");
+       SceneManager.LoadScene("Mainmenu");
+    } else if(Input.GetKey(KeyCode.G)){
+       SceneManager.LoadScene("gameover");
     }
     else{
         this.direction=Vector2.zero;
@@ -63,14 +63,9 @@ this.rigidbody=GetComponent<Rigidbody2D>();
   private void animationTrigger(){
     ///eğer fonksiyon çağrılmışsa bounce_anim adındaki triggerla animasyonu çağır
         anim.SetTrigger(animation_trigger_for_scale );
-        
-   
-        
     }
       private void soundtrigger(){
-   
-        audioo.Play();
-        
+        audioo.Play(); 
     }
 //top paddle a çarparsa    
 private void OnCollisionEnter2D(Collision2D collision) {
@@ -86,7 +81,6 @@ private void OnCollisionEnter2D(Collision2D collision) {
             float newAngle = Mathf.Clamp(currentAngle + bounceAngle, -maxBounceAngle, maxBounceAngle);
             Quaternion rotation = Quaternion.AngleAxis(newAngle, Vector3.forward);
             collision.rigidbody.velocity = rotation * Vector2.up * collision.rigidbody.velocity.magnitude;
-            
             ////
             ///animasyonu tetikleyecek fonksiyon
                 audioo.Play();

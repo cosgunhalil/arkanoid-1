@@ -6,8 +6,6 @@ public class Ball : MonoBehaviour
 {
    Animator anim;
    [SerializeField] Shake Maincamera;
-
-
    public float speed=750f;
    public new Rigidbody2D rigidbody{
     get; private set;

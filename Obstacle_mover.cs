@@ -11,7 +11,7 @@ public class Obstacle_mover : MonoBehaviour
     [SerializeField] private float frequency=0.2f;
     //ne kadar uzağa gidecek
     [SerializeField] private float magnitude=0.2f;
-    // Start is called before the first frame update
+   
     void Start()
     {
         startPosition=transform.position;
