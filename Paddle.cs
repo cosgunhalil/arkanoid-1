@@ -7,10 +7,13 @@ using UnityEngine.SceneManagement;
 public class Paddle : MonoBehaviour
 {
 Animator anim;
+Animator anim2;
 AudioSource audioo;
 Shake saker;
 //trigger variable
-const string bounce_anim="isbounced";
+const string animation_trigger_for_scale="isbounced";
+
+
  
 //top hızı
 [SerializeField] float speed=70f;
@@ -19,6 +22,8 @@ public float maxBounceAngle = 75f;
 void Start()
 {
     anim=this.GetComponent<Animator>();
+    anim2=this.GetComponentInChildren<Animator>();
+    
     audioo=this.GetComponent<AudioSource>();
     this.audioo.playOnAwake = false;
 }
@@ -57,11 +62,13 @@ this.rigidbody=GetComponent<Rigidbody2D>();
 }
   private void animationTrigger(){
     ///eğer fonksiyon çağrılmışsa bounce_anim adındaki triggerla animasyonu çağır
-        anim.SetTrigger(bounce_anim);
+        anim.SetTrigger(animation_trigger_for_scale );
+        
+   
         
     }
       private void soundtrigger(){
-    ///eğer fonksiyon çağrılmışsa bounce_anim adındaki triggerla animasyonu çağır
+   
         audioo.Play();
         
     }
