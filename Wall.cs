@@ -5,15 +5,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
-{///*********************************** yine aynı şeyden iki tane optmize et ***************************
-
-
-        public bool bounce=true;
+{ 
+    public bool bounce=true;
     AudioSource auidoo;
     ///Wall animasyonu için
     Animator anim;
     //triggerın adı
-    const string bounce_anim="iscollide";
+    const string trigger_animation="iscollide";
     void Start(){
         anim=GetComponent<Animator>();
         auidoo=GetComponent<AudioSource>();
@@ -21,7 +19,7 @@ public class Wall : MonoBehaviour
     private void animationTrigger(){
         if(bounce){
 
-        anim.SetTrigger(bounce_anim);
+        anim.SetTrigger(trigger_animation);
         }
     }
    private void OnCollisionEnter2D(Collision2D collision) {

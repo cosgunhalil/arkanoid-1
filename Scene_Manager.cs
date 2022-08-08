@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,5 +16,10 @@ public class Scene_Manager : MonoBehaviour
    public void over(){
     SceneManager.LoadScene("gameover");
    }
+   public void settings(){
+      SceneManager.LoadScene("Settings");
+   
+   }
+   
   
 }

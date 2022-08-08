@@ -5,18 +5,14 @@ using UnityEngine;
 public class Power : MonoBehaviour
 {         
           AudioSource audioo;
-        [SerializeField] GameObject Ball1;
-        [SerializeField] GameObject Ball2;
-        [SerializeField] GameObject Ball3;
-
-
+        [SerializeField]  GameObject [] ExtraBall;
+        
            private void Start() {
             audioo=this.GetComponent<AudioSource>();
             
           }
-        
-
           ///temas ederse Spawnball classını çağır
+          //effecti çal
      void OnTriggerEnter2D(Collider2D other) {
        if(other.gameObject.name=="Ball"||other.gameObject.name=="Ball(Clone)"){
          audioo.Play();
@@ -28,13 +24,14 @@ public class Power : MonoBehaviour
     }
     //3 tane ball objesini topun çarptığı objenin konumunda üret ve topun çarptığı objeyi yok et.
     void Spawnball(){
-        GameObject a= Object.Instantiate(Ball1) as GameObject;
-        GameObject a2= Object.Instantiate(Ball2) as GameObject;
-        GameObject a3= Object.Instantiate(Ball3) as GameObject;
+        GameObject [] spawnTheBall=new GameObject[3];
+        spawnTheBall[0]= Object.Instantiate(ExtraBall[0]) as GameObject;
+        spawnTheBall[1]= Object.Instantiate(ExtraBall[1]) as GameObject;
+        spawnTheBall[2]= Object.Instantiate(ExtraBall[2]) as GameObject;
        
-        a.transform.position=new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
-        a2.transform.position=new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
-        a3.transform.position=new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
+        spawnTheBall[0].transform.position=new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
+        spawnTheBall[1].transform.position=new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
+        spawnTheBall[2].transform.position=new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
     
         Destroy(this.gameObject);
         
