@@ -5,14 +5,14 @@ using UnityEngine;
 public class Corner : MonoBehaviour
 {
     //Top bazen iki köşe arasında gidiyordu o yüzden eklendi wall classının aynısı
-   Animator corner_bounce;
+   Animator corner_bounce_animation;
     //triggerın adı
     const string trigger_name="iscorner";
     void Start(){
-        corner_bounce=GetComponent<Animator>();
+        corner_bounce_animation=GetComponent<Animator>();
     }
     private void animationTrigger(){
-        corner_bounce.SetTrigger(trigger_name);
+        corner_bounce_animation.SetTrigger(trigger_name);
     }
    private void OnCollisionEnter2D(Collision2D collision) {
         //Cornera çarpan şeyin adı Ball mu eğer ballsa animasyon başlasın

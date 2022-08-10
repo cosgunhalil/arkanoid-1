@@ -8,9 +8,9 @@ public class Obstacle_mover : MonoBehaviour
 {
     private Vector3 startPosition;
     ///ne kadar hızlı hareket edecek
-    [SerializeField] private float frequency=0.2f;
+    [SerializeField] private float move_speed=0.2f;
     //ne kadar uzağa gidecek
-    [SerializeField] private float magnitude=0.2f;
+    [SerializeField] private float distance=0.2f;
    
     void Start()
     {
@@ -19,6 +19,6 @@ public class Obstacle_mover : MonoBehaviour
     // position her framede sağa doğru değişiyor
     void Update()
     {
-        transform.position=startPosition+transform.right*Mathf.Sin(Time.time*frequency)*magnitude;
+        transform.position=startPosition+transform.right*Mathf.Sin(Time.time*move_speed)*distance;
     }
 }
