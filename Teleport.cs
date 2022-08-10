@@ -7,32 +7,56 @@ public class Teleport : MonoBehaviour
 
     AudioSource audioo;
     //teleport noktalarının konumu
-    private Transform destination;
-    private Transform destination2;
+    private Transform BottomBlueTeleport;
+    private Transform UpperBlueTeleport;
+    private Transform BottomRedTeleport;
+    private Transform UpperRedTeleport;
+    Collider2D colliders;
     ////
    ///teleporterları birbirinden ayırmak için teleport A ve Teleport B gibi
-    [SerializeField] bool isTeleporter_A;
+    [SerializeField] bool isTeleporterBlueBottom;
+    [SerializeField] bool isTeleporterRedBottom;
+    [SerializeField] bool isTeleporterBlue;
+    [SerializeField] bool isTeleporterRed;
     //Teleportun gerçekleşmesi için gerekli olan uzaklık
     public float distance=1f;
     //Teleporter ve Teleporter2 taglerine sahip objeleri bulup onların transform componentlerini alıyor
     void Start(){
-            destination=GameObject.FindGameObjectWithTag("Teleporter").GetComponent<Transform>();
-            destination2=GameObject.FindGameObjectWithTag("Teleporter2").GetComponent<Transform>();
-           
+            BottomBlueTeleport=GameObject.FindGameObjectWithTag("Teleporter").GetComponent<Transform>();
+            UpperBlueTeleport=GameObject.FindGameObjectWithTag("Teleporter2").GetComponent<Transform>();
+            BottomRedTeleport=GameObject.FindGameObjectWithTag("Teleporter3").GetComponent<Transform>();
+            UpperRedTeleport=GameObject.FindGameObjectWithTag("Teleporter4").GetComponent<Transform>();
             audioo=this.GetComponent<AudioSource>();
     }
-   
-    void OnTriggerEnter2D(Collider2D other) {
-        //topun teleporta pozisyonu olabilecek minimum uzaklıktan büyük mü ve girdiği teleport A mı B mı?
-    if(other.gameObject.name=="Ball"||other.gameObject.name=="Ball(Clone)"){
+    void Blue_Teleport(){
         audioo.Play();
-    if(Vector2.Distance(transform.position,other.transform.position)>distance&&isTeleporter_A==false){
-        other.transform.position=new Vector3(destination.position.x,destination.position.y,destination.position.z);
-    }else if(Vector2.Distance(transform.position,other.transform.position)>distance&&isTeleporter_A==true){
-        other.transform.position=new Vector3(destination2.position.x,destination2.position.y,destination2.position.z);
+    if(Vector2.Distance(transform.position,colliders.transform.position)>distance&&isTeleporterBlueBottom==false){
+        colliders.transform.position=new Vector3(BottomBlueTeleport.position.x,BottomBlueTeleport.position.y,BottomBlueTeleport.position.z);
+    }else if(Vector2.Distance(transform.position,colliders.transform.position)>distance&&isTeleporterBlueBottom==true){
+        colliders.transform.position=new Vector3(UpperBlueTeleport.position.x,UpperBlueTeleport.position.y,UpperBlueTeleport.position.z);
     }
+    }
+
+    void Red_Teleport(){
+        audioo.Play();
+    if(Vector2.Distance(transform.position,colliders.transform.position)>distance&&isTeleporterRedBottom==false){
+        colliders.transform.position=new Vector3(BottomRedTeleport.position.x,BottomRedTeleport.position.y,BottomRedTeleport.position.z);
+    }else if(Vector2.Distance(transform.position,colliders.transform.position)>distance&&isTeleporterRedBottom==true){
+        colliders.transform.position=new Vector3(UpperRedTeleport.position.x,UpperRedTeleport.position.y,UpperRedTeleport.position.z);
+    }
+    }
+    void OnTriggerEnter2D(Collider2D other) {
+         this.colliders=other;
+        //topun teleporta pozisyonu olabilecek minimum uzaklıktan büyük mü ve girdiği teleport A mı B mı?
+        if((colliders.gameObject.name=="Ball"||colliders.gameObject.name=="Ball(Clone)")&&isTeleporterBlue){
+            Blue_Teleport();
+        }
+        else if((colliders.gameObject.name=="Ball"||colliders.gameObject.name=="Ball(Clone)")&&isTeleporterRed){
+            Red_Teleport();
+        }
+  
     ////
     }
     }
-}
+
 

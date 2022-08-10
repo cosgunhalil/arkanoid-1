@@ -29,7 +29,7 @@ public class Brick : MonoBehaviour
     this.spriteRenderer.sprite=this.color[this.health-1];
   
   }
-  private void Hit(){
+  private void GotHit(){
    ///çarptıysa brick sağlığını 1 azalt rengini değiştir
     this.health--;
   if(this.health<=0){
@@ -54,7 +54,7 @@ private void OnCollisionEnter2D(Collision2D collision) {
       /// eğer ballsa partikülleri ve Hit() fonksiyonunu çalıştır
       particle[health-1].Play();
       AudioTrigger();
-      Hit();
+      GotHit();
     }
     
   }

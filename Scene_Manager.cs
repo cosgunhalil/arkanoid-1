@@ -20,6 +20,9 @@ public class Scene_Manager : MonoBehaviour
       SceneManager.LoadScene("Settings");
    
    }
+   public void exit(){
+      Application.Quit();
+   }
    
   
 }
