@@ -40,19 +40,22 @@ public class Brick : MonoBehaviour
   
   }
 
+//TODO: setAudioEnable - use imperative
   public void audiosettings(){
     this.audioenablee=true;
   }
+  //TODO: rename - use imperative
   private void AudioTrigger(){
     brick_effect.Play();
   }
-  //çarpışma olduğu anda
+  //çarpışma olduğu anda 
 private void OnCollisionEnter2D(Collision2D collision) {
    
   ///çarpan şeyin adı Ball mu?
+  //TODO: use compare tag
     if(collision.gameObject.name=="Ball"||collision.gameObject.name=="Ball(Clone)"){
       /// eğer ballsa partikülleri ve Hit() fonksiyonunu çalıştır
-      particle[health-1].Play();
+      particle[health-1].Play();// TODO: particle[-1].Play() -> Protect!!!!
       AudioTrigger();
       GotHit();
     }
